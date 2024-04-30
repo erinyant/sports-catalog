@@ -1,11 +1,20 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
 import SportsContainer from './Components/SportsContainer';
+import SportForm from './Components/SportForm'
 
 function App() {
+  const [sports, setSports] = useState([])
+
+  function onAddSport(newSport) {
+    setSports([...sports, newSport])
+  }
+
   return (
     <div className="App">
-      <SportsContainer />
+      <SportForm onAddSport={onAddSport}/>
+      <SportsContainer setSports={setSports} sports={sports}/>
     </div>
   );
 }
